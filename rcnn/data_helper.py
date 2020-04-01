@@ -38,7 +38,6 @@ def load_data_and_labels_chinese(train_data_file, test_data_file, sequence_lengt
             labels.append(label)
             # 分词
             segments = [seg for seg in jieba.cut(data, cut_all=False)]
-
             segments_ = [seg.strip() for seg in segments if seg not in punctuation
                          and seg not in string.punctuation]
             contents.append([seg_ for seg_ in segments_ if seg_ != ''])
@@ -120,15 +119,15 @@ def batch_iter(data, batch_size, num_epochs, shuffle=True):
 
 if __name__ == '__main__':
     word2id, train_datas, train_labels, test_datas, test_labels = \
-        load_data_and_labels_chinese('../data/train.txt', '../data/test.txt', 300, 10000)
-    print(len(train_datas), len(train_labels))
-    print(len(test_datas), len(test_labels))
-    # print(word2id['UNK'], word2id['PAD'])
-    # print(train_datas.shape, train_labels.shape, test_datas.shape, test_labels.shape)
-    batchs = batch_iter(list(zip(train_datas, train_labels)), 64, 1)
-    for i, batch in enumerate(batchs):
-        x_batch, y_batch = zip(*batch)
-        print(i, len(x_batch), len(y_batch))
+        load_data_and_labels_chinese('../data/min_test.txt', '../data/min_train.txt', 3, 10)
+    # print(len(train_datas), len(train_labels))
+    # print(len(test_datas), len(test_labels))
+    # # print(word2id['UNK'], word2id['PAD'])
+    # # print(train_datas.shape, train_labels.shape, test_datas.shape, test_labels.shape)
+    # batchs = batch_iter(list(zip(train_datas, train_labels)), 64, 1)
+    # for i, batch in enumerate(batchs):
+    #     x_batch, y_batch = zip(*batch)
+    #     print(i, len(x_batch), len(y_batch))
 
 
 
